@@ -23,3 +23,10 @@ print(top_clientes)
 print("Três maiores países " )
 top_paises = vendas_globais.groupby('ClientePaís')['Vendas'].sum().nlargest(3)
 print(top_paises)
+
+
+
+
+# 10. Quais os países nos quais mais se tiram pedidos (qtde total de pedidos)?
+total_pedidos_pais = vendas_globais['ClientePaís'].value_counts()
+print(total_pedidos_pais)
