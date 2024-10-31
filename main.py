@@ -126,7 +126,6 @@ def calcular_vendedores_top_descontos_usa(vendas_globais, vendedores):
 
 
 # 7. Quais os fornecedores que dão a maior margem de lucro ($) no segmento de “Vestuário Feminino” (Womens wear)?
-
 def calcular_fornecedores_top_margem_lucro_vestuario(vendas_globais, fornecedores):
     print("\nFornecedores que dão a maior margem de lucro ($) no segmento 'Vestuário Feminino':")
     filtros = (vendas_globais['CategoriaNome'] == "Womens wear")
@@ -146,7 +145,50 @@ def calcular_fornecedores_top_margem_lucro_vestuario(vendas_globais, fornecedore
     ax7.set_title("Top Fornecedores em Margem de Lucro no Vestuário Feminino")
     ax7.tick_params(axis='x', rotation=45)
 
+# 8. Quanto que foi vendido ($) no ano de 2009? Analisando as vendas anuais entre 2009 e 2012, podemos concluir que o faturamento vem crescendo, se mantendo estável ou decaindo?
+def analisar_vendas_2009_2012(vendas_globais):
+    vendas_globais['Ano'] = pd.to_datetime(vendas_globais['Data']).dt.year
+    vendas_2009 = vendas_globais[vendas_globais['Ano'] == 2009]['Vendas'].sum()
+    print(f"Vendas no ano de 2009: R$ {vendas_2009:,.2f}")
 
+    vendas_anuais = vendas_globais[(vendas_globais['Ano'] >= 2009) & (vendas_globais['Ano'] <= 2012)]
+    vendas_por_ano = vendas_anuais.groupby('Ano')['Vendas'].sum().reset_index()
+    print("\nVendas anuais entre 2009 e 2012:")
+    print(vendas_por_ano)
+
+    tendencia = ""
+    if vendas_por_ano['Vendas'].is_monotonic_increasing:
+        tendencia = "Crescente"
+    elif vendas_por_ano['Vendas'].is_monotonic_decreasing:
+        tendencia = "Decrescente"
+    else:
+        tendencia = "Estável ou variável"
+
+    print(f"\nTendência de faturamento entre 2009 e 2012: {tendencia}")
+
+    ax8 = plt.subplot(3, 3, 8)
+    ax8.plot(vendas_por_ano['Ano'], vendas_por_ano['Vendas'], marker='o', color='orange')
+    ax8.set_xlabel('Ano')
+    ax8.set_ylabel('Vendas (R$)')
+    ax8.set_title('Vendas Anuais de 2009 a 2012')
+    ax8.tick_params(axis='x', rotation=45)
+
+# 9. Quais são os principais clientes (vendas $) do segmento “Calçados Masculinos” (Men ́s Footwear) na Alemanha?
+# PErgunta já respondida na questão 5
+
+# 10. Quais os países nos quais mais se tiram pedidos (qtde total de pedidos)?
+def calcular_paises_com_mais_pedidos(vendas_globais):
+    print("\nPaíses com mais pedidos:")
+    pedidos_por_pais = vendas_globais.groupby("ClientePaís")['PedidoID'].count().nlargest(10).reset_index(name='Total Pedidos')
+
+    print(pedidos_por_pais)
+
+    ax10 = plt.subplot(3, 3, 9)
+    ax10.bar(pedidos_por_pais["ClientePaís"], pedidos_por_pais["Total Pedidos"], color='purple')
+    ax10.set_xlabel('País')
+    ax10.set_ylabel('Total de Pedidos')
+    ax10.set_title('Top 10 Países por Quantidade de Pedidos')
+    ax10.tick_params(axis='x', rotation=45)
 
 
 plt.figure(figsize=(14, 6))
@@ -158,6 +200,8 @@ calcular_despesa_frete_transportadora(vendas_globais, transportadoras)
 calcular_principais_clientes_calcados_alemanha(vendas_globais)
 calcular_vendedores_top_descontos_usa(vendas_globais, vendedores)
 calcular_fornecedores_top_margem_lucro_vestuario(vendas_globais, fornecedores)
+analisar_vendas_2009_2012(vendas_globais)
+calcular_paises_com_mais_pedidos(vendas_globais)
 
 
 plt.tight_layout()
