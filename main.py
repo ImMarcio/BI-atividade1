@@ -84,8 +84,11 @@ def calcular_despesa_frete_transportadora(vendas_globais, transportadoras):
 # 5. Quais são os principais clientes (vendas $) do segmento “Calçados Masculinos” (Men ́s Footwear) na Alemanha?
 
 def calcular_principais_clientes_calcados_alemanha(vendas_globais):
+
+    print(vendas_globais['CategoriaNome'].unique())
+    print(vendas_globais['ClientePaís'].unique())
     print("\nPrincipais clientes (vendas $) do segmento 'Calçados Masculinos' na Alemanha:")
-    filtros = (vendas_globais['CategoriaNome'] == "Men’s Footwear") & (vendas_globais['ClientePaís'] == 'Alemanha')
+    filtros = (vendas_globais['CategoriaNome'] == "Men´s Footwear") & (vendas_globais['ClientePaís'] == 'Germany')
     top_clientes = vendas_globais[filtros].groupby('ClienteNome')['Vendas'].sum().nlargest(10).reset_index()
     
     top_clientes_console = top_clientes.copy()
@@ -104,7 +107,7 @@ def calcular_principais_clientes_calcados_alemanha(vendas_globais):
 
 def calcular_vendedores_top_descontos_usa(vendas_globais, vendedores):
     print("\nVendedores que mais dão descontos nos Estados Unidos:")
-    descontos_usa = vendas_globais[vendas_globais['ClientePaís'] == 'Estados Unidos']
+    descontos_usa = vendas_globais[vendas_globais['ClientePaís'] == 'USA']
     top_vendedores = descontos_usa.groupby('VendedorID')['Desconto'].sum().nlargest(10).reset_index()
     
     resultado = pd.merge(top_vendedores, vendedores, on="VendedorID")
