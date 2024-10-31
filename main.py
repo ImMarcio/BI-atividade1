@@ -81,12 +81,81 @@ def calcular_despesa_frete_transportadora(vendas_globais, transportadoras):
     ax4.tick_params(axis='x', rotation=45)
 
 
+# 5. Quais são os principais clientes (vendas $) do segmento “Calçados Masculinos” (Men ́s Footwear) na Alemanha?
+
+def calcular_principais_clientes_calcados_alemanha(vendas_globais):
+    print("\nPrincipais clientes (vendas $) do segmento 'Calçados Masculinos' na Alemanha:")
+    filtros = (vendas_globais['CategoriaNome'] == "Men’s Footwear") & (vendas_globais['ClientePaís'] == 'Alemanha')
+    top_clientes = vendas_globais[filtros].groupby('ClienteNome')['Vendas'].sum().nlargest(10).reset_index()
+    
+    top_clientes_console = top_clientes.copy()
+    top_clientes_console['Vendas'] = top_clientes_console['Vendas'].apply(lambda x: f'R$ {x:,.2f}'.replace(',', 'X').replace('.', ',').replace('X', '.'))
+    print(top_clientes_console)
+
+    ax5 = plt.subplot(3, 3, 5)
+    ax5.bar(top_clientes["ClienteNome"], top_clientes["Vendas"], color='lightblue')
+    ax5.set_xlabel('Cliente')
+    ax5.set_ylabel('Vendas (R$)')
+    ax5.set_title("Principais Clientes de 'Calçados Masculinos' na Alemanha")
+    ax5.tick_params(axis='x', rotation=45)
+
+
+# 6. Quais os vendedores que mais dão descontos nos Estados Unidos?
+
+def calcular_vendedores_top_descontos_usa(vendas_globais, vendedores):
+    print("\nVendedores que mais dão descontos nos Estados Unidos:")
+    descontos_usa = vendas_globais[vendas_globais['ClientePaís'] == 'Estados Unidos']
+    top_vendedores = descontos_usa.groupby('VendedorID')['Desconto'].sum().nlargest(10).reset_index()
+    
+    resultado = pd.merge(top_vendedores, vendedores, on="VendedorID")
+    resultado.rename(columns={"VendedorNome": "Vendedor", "Desconto": "Total Desconto"}, inplace=True)
+    
+    resultado_console = resultado.copy()
+    resultado_console['Total Desconto'] = resultado_console['Total Desconto'].apply(lambda x: f'R$ {x:,.2f}'.replace(',', 'X').replace('.', ',').replace('X', '.'))
+    print(resultado_console[["Vendedor", "Total Desconto"]])
+
+    ax6 = plt.subplot(3, 3, 6)
+    ax6.bar(resultado["Vendedor"], resultado["Total Desconto"], color='lightgreen')
+    ax6.set_xlabel('Vendedor')
+    ax6.set_ylabel('Total Desconto (R$)')
+    ax6.set_title("Top Vendedores em Descontos nos EUA")
+    ax6.tick_params(axis='x', rotation=45)
+
+
+# 7. Quais os fornecedores que dão a maior margem de lucro ($) no segmento de “Vestuário Feminino” (Womens wear)?
+
+def calcular_fornecedores_top_margem_lucro_vestuario(vendas_globais, fornecedores):
+    print("\nFornecedores que dão a maior margem de lucro ($) no segmento 'Vestuário Feminino':")
+    filtros = (vendas_globais['CategoriaNome'] == "Womens wear")
+    top_fornecedores = vendas_globais[filtros].groupby('FornecedorID')['Margem Bruta'].sum().nlargest(10).reset_index()
+    
+    resultado = pd.merge(top_fornecedores, fornecedores, on="FornecedorID")
+    resultado.rename(columns={"FornecedorNome": "Fornecedor", "Margem Bruta": "Margem Lucro Total"}, inplace=True)
+    
+    resultado_console = resultado.copy()
+    resultado_console['Margem Lucro Total'] = resultado_console['Margem Lucro Total'].apply(lambda x: f'R$ {x:,.2f}'.replace(',', 'X').replace('.', ',').replace('X', '.'))
+    print(resultado_console[["Fornecedor", "Margem Lucro Total"]])
+
+    ax7 = plt.subplot(3, 3, 7)
+    ax7.bar(resultado["Fornecedor"], resultado["Margem Lucro Total"], color='lightcoral')
+    ax7.set_xlabel('Fornecedor')
+    ax7.set_ylabel('Margem Lucro Total (R$)')
+    ax7.set_title("Top Fornecedores em Margem de Lucro no Vestuário Feminino")
+    ax7.tick_params(axis='x', rotation=45)
+
+
+
+
 plt.figure(figsize=(14, 6))
 
 top_10_clientes(vendas_globais)
 top_paises(vendas_globais)
 categorias_maior_faturamento_brasil(vendas_globais)
 calcular_despesa_frete_transportadora(vendas_globais, transportadoras)
+calcular_principais_clientes_calcados_alemanha(vendas_globais)
+calcular_vendedores_top_descontos_usa(vendas_globais, vendedores)
+calcular_fornecedores_top_margem_lucro_vestuario(vendas_globais, fornecedores)
+
 
 plt.tight_layout()
 plt.show()
