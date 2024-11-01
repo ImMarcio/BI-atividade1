@@ -20,11 +20,22 @@ def top_10_clientes(vendas_globais):
     print(top_clientes)
 
     ax1 = plt.subplot(3, 3, 1)
-    ax1.bar(top_clientes['ClienteNome'], top_clientes['Total Vendas'], color='lightgreen')
+    bars = ax1.bar(top_clientes['ClienteNome'], top_clientes['Total Vendas'], color='lightgreen')
     ax1.set_xlabel('Cliente')
     ax1.set_ylabel('Vendas (R$)')
     ax1.set_title('Top 10 Clientes por Faturamento')
     ax1.tick_params(axis='x', rotation=45)
+
+    for bar in bars:
+        yval = bar.get_height()
+        ax1.text(
+            bar.get_x() + bar.get_width() / 2, 
+            yval, 
+            f'R${yval:,.2f}'.replace('.', ',').replace(',', '.', 1),
+            ha='center', 
+            va='bottom', 
+            fontsize=10
+        )
 
 
 # 2. Quais os três maiores países, em termos de vendas ($)?
@@ -35,11 +46,22 @@ def top_paises(vendas_globais):
     print(top_paises)
 
     ax2 = plt.subplot(3, 3, 2)
-    ax2.bar(top_paises['ClientePaís'], top_paises['Total Vendas'], color='orange')
+    bars = ax2.bar(top_paises['ClientePaís'], top_paises['Total Vendas'], color='orange')
     ax2.set_xlabel('País')
     ax2.set_ylabel('Vendas (R$)')
     ax2.set_title('Top 3 Maiores Países em Vendas')
     ax2.tick_params(axis='x', rotation=45)
+
+    for bar in bars:
+        yval = bar.get_height()
+        ax2.text(
+            bar.get_x() + bar.get_width() / 2, 
+            yval, 
+            f'R${yval:,.2f}'.replace('.', ',').replace(',', '.', 1),
+            ha='center', 
+            va='bottom', 
+            fontsize=10
+        )
 
 
 # 3. Quais as categorias de produtos que geram maior faturamento (vendas $) no Brasil?
@@ -52,11 +74,22 @@ def categorias_maior_faturamento_brasil(vendas_globais):
     print(top_categorias_brasil)
 
     ax3 = plt.subplot(3, 3, 3)
-    ax3.bar(top_categorias_brasil["CategoriaNome"], top_categorias_brasil["Faturamento"], color='skyblue')
+    bars = ax3.bar(top_categorias_brasil["CategoriaNome"], top_categorias_brasil["Faturamento"], color='skyblue')
     ax3.set_xlabel('Categoria')
     ax3.set_ylabel('Faturamento (R$)')
     ax3.set_title('Faturamento por Categoria no Brasil')
     ax3.tick_params(axis='x', rotation=45)
+
+    for bar in bars:
+        yval = bar.get_height()
+        ax3.text(
+            bar.get_x() + bar.get_width() / 2, 
+            yval, 
+            f'R${yval:,.2f}'.replace('.', ',').replace(',', '.', 1),
+            ha='center', 
+            va='bottom', 
+            fontsize=10
+        )
 
 
 # 4. Qual a despesa com frete envolvendo cada transportadora?
@@ -74,11 +107,22 @@ def calcular_despesa_frete_transportadora(vendas_globais, transportadoras):
     print(resultado_console[["Transportadora", "Custo Frete Total"]])
 
     ax4 = plt.subplot(3, 3, 4)
-    ax4.bar(resultado["Transportadora"], resultado["Custo Frete Total"], color='salmon')
+    bars = ax4.bar(resultado["Transportadora"], resultado["Custo Frete Total"], color='salmon')
     ax4.set_xlabel('Transportadora')
     ax4.set_ylabel('Custo Frete Total (R$)')
     ax4.set_title('Despesa com Frete por Transportadora')
     ax4.tick_params(axis='x', rotation=45)
+
+    for bar in bars:
+        yval = bar.get_height()
+        ax4.text(
+            bar.get_x() + bar.get_width() / 2, 
+            yval, 
+            f'R${yval:,.2f}'.replace('.', ',').replace(',', '.', 1),
+            ha='center', 
+            va='bottom', 
+            fontsize=10
+        )
 
 
 # 5. Quais são os principais clientes (vendas $) do segmento “Calçados Masculinos” (Men ́s Footwear) na Alemanha?
@@ -96,11 +140,22 @@ def calcular_principais_clientes_calcados_alemanha(vendas_globais):
     print(top_clientes_console)
 
     ax5 = plt.subplot(3, 3, 5)
-    ax5.bar(top_clientes["ClienteNome"], top_clientes["Vendas"], color='lightblue')
+    bars = ax5.bar(top_clientes["ClienteNome"], top_clientes["Vendas"], color='lightblue')
     ax5.set_xlabel('Cliente')
     ax5.set_ylabel('Vendas (R$)')
     ax5.set_title("Principais Clientes de 'Calçados Masculinos' na Alemanha")
     ax5.tick_params(axis='x', rotation=45)
+
+    for bar in bars:
+        yval = bar.get_height()
+        ax5.text(
+            bar.get_x() + bar.get_width() / 2, 
+            yval, 
+            f'R${yval:,.2f}'.replace('.', ',').replace(',', '.', 1),
+            ha='center', 
+            va='bottom', 
+            fontsize=10
+        )
 
 
 # 6. Quais os vendedores que mais dão descontos nos Estados Unidos?
@@ -118,11 +173,22 @@ def calcular_vendedores_top_descontos_usa(vendas_globais, vendedores):
     print(resultado_console[["Vendedor", "Total Desconto"]])
 
     ax6 = plt.subplot(3, 3, 6)
-    ax6.bar(resultado["Vendedor"], resultado["Total Desconto"], color='lightgreen')
+    bars = ax6.bar(resultado["Vendedor"], resultado["Total Desconto"], color='lightgreen')
     ax6.set_xlabel('Vendedor')
     ax6.set_ylabel('Total Desconto (R$)')
     ax6.set_title("Top Vendedores em Descontos nos EUA")
     ax6.tick_params(axis='x', rotation=45)
+
+    for bar in bars:
+        yval = bar.get_height()
+        ax6.text(
+            bar.get_x() + bar.get_width() / 2, 
+            yval, 
+            f'R${yval:,.2f}'.replace('.', ',').replace(',', '.', 1),
+            ha='center', 
+            va='bottom', 
+            fontsize=10
+        )
 
 
 # 7. Quais os fornecedores que dão a maior margem de lucro ($) no segmento de “Vestuário Feminino” (Womens wear)?
@@ -139,11 +205,22 @@ def calcular_fornecedores_top_margem_lucro_vestuario(vendas_globais, fornecedore
     print(resultado_console[["Fornecedor", "Margem Lucro Total"]])
 
     ax7 = plt.subplot(3, 3, 7)
-    ax7.bar(resultado["Fornecedor"], resultado["Margem Lucro Total"], color='lightcoral')
+    bars = ax7.bar(resultado["Fornecedor"], resultado["Margem Lucro Total"], color='lightcoral')
     ax7.set_xlabel('Fornecedor')
     ax7.set_ylabel('Margem Lucro Total (R$)')
     ax7.set_title("Top Fornecedores em Margem de Lucro no Vestuário Feminino")
     ax7.tick_params(axis='x', rotation=45)
+
+    for bar in bars:
+        yval = bar.get_height()
+        ax7.text(
+            bar.get_x() + bar.get_width() / 2, 
+            yval, 
+            f'R${yval:,.2f}'.replace('.', ',').replace(',', '.', 1),
+            ha='center', 
+            va='bottom', 
+            fontsize=10
+        )
 
 # 8. Quanto que foi vendido ($) no ano de 2009? Analisando as vendas anuais entre 2009 e 2012, podemos concluir que o faturamento vem crescendo, se mantendo estável ou decaindo?
 def analisar_vendas_2009_2012(vendas_globais):
@@ -173,6 +250,7 @@ def analisar_vendas_2009_2012(vendas_globais):
     ax8.set_title('Vendas Anuais de 2009 a 2012')
     ax8.tick_params(axis='x', rotation=45)
 
+
 # 9. Quais são os principais clientes (vendas $) do segmento “Calçados Masculinos” (Men ́s Footwear) na Alemanha?
 # PErgunta já respondida na questão 5
 
@@ -184,11 +262,22 @@ def calcular_paises_com_mais_pedidos(vendas_globais):
     print(pedidos_por_pais)
 
     ax10 = plt.subplot(3, 3, 9)
-    ax10.bar(pedidos_por_pais["ClientePaís"], pedidos_por_pais["Total Pedidos"], color='purple')
+    bars = ax10.bar(pedidos_por_pais["ClientePaís"], pedidos_por_pais["Total Pedidos"], color='purple')
     ax10.set_xlabel('País')
     ax10.set_ylabel('Total de Pedidos')
     ax10.set_title('Top 10 Países por Quantidade de Pedidos')
     ax10.tick_params(axis='x', rotation=45)
+
+    for bar in bars:
+        yval = bar.get_height()
+        ax10.text(
+            bar.get_x() + bar.get_width() / 2, 
+            yval, 
+            f'{yval}',
+            ha='center', 
+            va='bottom', 
+            fontsize=10
+        )
 
 
 plt.figure(figsize=(14, 6))
