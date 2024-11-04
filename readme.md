@@ -137,14 +137,17 @@ Utilizamos o **Pandas** para manipulação e agregação dos dados, e o **Matplo
     <a href="https://github.com/aliclic">
         <img src="https://avatars.githubusercontent.com/u/102983259?v=4" alt="Alic Victor" style="width: 100px; height: 100px;">
         <strong>Alic Victor</strong> 
+        <br>
     </a>
     <a href="https://github.com/julianafer">
         <img src="https://avatars.githubusercontent.com/u/101995776?v=4" alt="Juliana Ferreira" style="width: 100px; height: 100px;">
         <strong>Juliana Ferreira</strong>
+        <br>
     </a>
     <a href="https://github.com/ImMarcio">
         <img src="https://avatars.githubusercontent.com/u/105254896?v=4" alt="Márcio José" style="width: 100px; height: 100px;">
-        <strong>Márcio José</strong> 
+        <strong>Márcio José</strong>
+        <br>
     </a>
     <a href="https://github.com/RicardoLuiz05">
         <img src="https://avatars.githubusercontent.com/u/105940717?v=4" alt="Ricardo Luiz" style="width: 100px; height: 100px;">
