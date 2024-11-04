@@ -131,8 +131,22 @@ Utilizamos o **Pandas** para manipulação e agregação dos dados, e o **Matplo
 
 -  A estratégia adotada de análise, agrupamento, filtragem e visualização de dados, apoiada pelas bibliotecas Pandas e Matplotlib, mostrou-se eficaz na extração e apresentação das informações solicitadas. A utilização de ferramentas open-source, como Python e suas bibliotecas, contribuiu para a redução de custos no projeto. A metodologia aplicada permitiu responder às perguntas de negócio de forma eficiente, dentro de um prazo razoável, demonstrando o potencial da análise de dados para a tomada de decisões estratégicas. A identificação dos principais clientes, mercados e produtos de maior rentabilidade fornece insights valiosos para direcionar esforços de marketing e vendas, otimizar a logística e negociar melhores condições com fornecedores.
 
-
-![Membro 1](https://avatars.githubusercontent.com/u/102983259?v=4)  Alic Victor - @aliclic
-![Membro 2](https://avatars.githubusercontent.com/u/101995776?v=4)  Juliana Ferreira - @julianafer
-![Membro 3](https://avatars.githubusercontent.com/u/105254896?v=4) Márcio José - @ImMarcio 
-![Membro 4](https://avatars.githubusercontent.com/u/105940717?v=4)Ricardo Luiz - @RicardoLuiz05
+#Equipe
+<div>
+    <a href="https://github.com/aliclic">
+        <img src="https://avatars.githubusercontent.com/u/102983259?v=4" alt="Alic Victor" style="width: 100px; height: 100px;">
+        <strong>Alic Victor</strong> - @aliclic
+    </a>
+    <a href="https://github.com/julianafer">
+        <img src="https://avatars.githubusercontent.com/u/101995776?v=4" alt="Juliana Ferreira" style="width: 100px; height: 100px;">
+        <strong>Juliana Ferreira</strong> - @julianafer
+    </a>
+    <a href="https://github.com/ImMarcio">
+        <img src="https://avatars.githubusercontent.com/u/105254896?v=4" alt="Márcio José" style="width: 100px; height: 100px;">
+        <strong>Márcio José</strong> - @ImMarcio
+    </a>
+    <a href="https://github.com/RicardoLuiz05">
+        <img src="https://avatars.githubusercontent.com/u/105940717?v=4" alt="Ricardo Luiz" style="width: 100px; height: 100px;">
+        <strong>Ricardo Luiz</strong> - @RicardoLuiz05
+    </a>
+</div>
