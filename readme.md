@@ -126,5 +126,13 @@ Utilizamos o **Pandas** para manipulação e agregação dos dados, e o **Matplo
 - **Resultados Obtidos:**
  - Este projeto atingiu seu objetivo de analisar dados de vendas e responder a perguntas-chave sobre o desempenho do negócio. Através do uso combinado de Python, Pandas e Matplotlib, foi possível extrair informações relevantes sobre os maiores clientes, países com maior faturamento, categorias de produtos mais vendidas, custos de frete, descontos aplicados por vendedores, margens de lucro de fornecedores e tendências de vendas ao longo do tempo. A visualização dos dados em gráficos de barras facilitou a compreensão e comunicação dos resultados, permitindo uma análise mais clara e objetiva.
 
+
+
+
 -  A estratégia adotada de análise, agrupamento, filtragem e visualização de dados, apoiada pelas bibliotecas Pandas e Matplotlib, mostrou-se eficaz na extração e apresentação das informações solicitadas. A utilização de ferramentas open-source, como Python e suas bibliotecas, contribuiu para a redução de custos no projeto. A metodologia aplicada permitiu responder às perguntas de negócio de forma eficiente, dentro de um prazo razoável, demonstrando o potencial da análise de dados para a tomada de decisões estratégicas. A identificação dos principais clientes, mercados e produtos de maior rentabilidade fornece insights valiosos para direcionar esforços de marketing e vendas, otimizar a logística e negociar melhores condições com fornecedores.
 
+
+Alic Victor - @aliclic
+Juliana Ferreira - @julianafer
+Márcio José - @ImMarcio
+Ricardo Luiz - @RicardoLuiz05
